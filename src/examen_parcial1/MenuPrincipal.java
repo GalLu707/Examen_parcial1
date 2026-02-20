@@ -216,7 +216,7 @@ public class MenuPrincipal extends BaseGui{
             JOptionPane.showMessageDialog(this, "Código inválido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+ 
         RentItem encontrado = null;
         for (RentItem ri : rentItems) {
             if (ri.getCodigo() == codigo) {
