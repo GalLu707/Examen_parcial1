@@ -43,7 +43,7 @@ public class BaseGui extends JFrame {
       JButton b = new JButton(txt);
       
       b.setFont(fuentebase);
-      b.setBackground(new Color(33,150,243));
+      b.setBackground(new Color(235,238,255));
       b.setForeground(Color.BLACK);
       b.setFocusPainted(false);
       b.setBorder(new EmptyBorder(10,16,10,16));

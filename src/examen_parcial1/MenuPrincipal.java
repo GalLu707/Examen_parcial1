@@ -70,26 +70,26 @@ public class MenuPrincipal extends BaseGui {
 
         panelPrincipal.setLayout(null);
 
-        lblTitulo = crearLabelTitulo("Menu Principal", 200, 20, 300, 80);
+        lblTitulo = crearLabelTitulo("Menu Principal", 200, 94, 300, 80);
 
-        lblTitulo.setForeground(Color.RED);
+        lblTitulo.setForeground(Color.BLACK);
 
         panelPrincipal.add(lblTitulo);
 
         btnAgregarItem = crearbtn("Agregar Item");
-        btnAgregarItem.setBounds(200, 105, 220, 50);
+        btnAgregarItem.setBounds(200, 160, 220, 50);
         panelPrincipal.add(btnAgregarItem);
 
         btnRentar = crearbtn("Rentar");
-        btnRentar.setBounds(200, 185, 220, 50);
+        btnRentar.setBounds(200, 240, 220, 50);
         panelPrincipal.add(btnRentar);
 
         btnEjecutar = crearbtn("Ejecutar Submenú");
-        btnEjecutar.setBounds(200, 265, 220, 50);
+        btnEjecutar.setBounds(200, 320, 220, 50);
         panelPrincipal.add(btnEjecutar);
  
         btnImprimir = crearbtn("Ver items registrados");
-        btnImprimir.setBounds(200, 345, 220, 50);
+        btnImprimir.setBounds(200, 400, 220, 50);
         panelPrincipal.add(btnImprimir);
 
         btnSalir = crearbtn("Salir");
