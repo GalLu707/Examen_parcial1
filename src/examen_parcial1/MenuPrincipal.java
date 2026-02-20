@@ -110,7 +110,7 @@ public class MenuPrincipal extends BaseGui {
         String opciones[] = {"Movie", "Game"};
         int tipo = JOptionPane.showOptionDialog(
                 this,
-                "Seleccione tipo de Ttem",
+                "Seleccione tipo de Item",
                 "Agregar Item",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
