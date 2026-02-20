@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,8 +25,8 @@ public class Game extends RentItem implements MenuActions {
     private Calendar Fecha_Publicacion;
     private ArrayList<String> especificaciones;
 
-    public Game(int codItem, String nomItem) {
-        super(codItem, nomItem);
+    public Game(int codItem, String nombItem) {
+        super(codItem, nombItem, 20.0, 0, null);
         Fecha_Publicacion = Calendar.getInstance();
         especificaciones = new ArrayList<>();
     }
@@ -45,7 +47,7 @@ public class Game extends RentItem implements MenuActions {
             return;
         }
 
-        JFrame frame = new JFrame("Especificaiones de " + getNombre());
+        JFrame frame = new JFrame("Especificaciones de " + getNombre());
         frame.setSize(400, 300);
         frame.setLocationRelativeTo(null);
         frame.setLayout(new GridLayout(1, 1));
@@ -71,7 +73,7 @@ public class Game extends RentItem implements MenuActions {
 
     @Override
     public double pagoRenta(int dias) {
-        return 20 * dias;
+        return getPrecioBase() * dias;
     }
 
     @Override
@@ -79,7 +81,7 @@ public class Game extends RentItem implements MenuActions {
         SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
         String fecha = simpleDate.format(Fecha_Publicacion.getTime());
 
-        return super.toString() + " | Publicacion: " + fecha + " - PS3 Game";
+        return super.toString() + " | Publicacion: " + fecha + " – PS3 Game";
     }
 
     public void submenu() {
@@ -89,27 +91,32 @@ public class Game extends RentItem implements MenuActions {
         Submenu.setLayout(new GridLayout(5, 1));
         Submenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
-        JButton btnFecha = new JButton("Actualizar fecha de publicacion");
-        JButton btnAgregarEspecificacion = new JButton("Agregar fecha de publicacion");
-        JButton btnVerEspecificacion = new JButton("Ver especificaciones");
-        JButton btnSalir = new JButton("Salir");
+        JButton BtnFecha = new JButton("Actualizar fecha de publicacion");
+        JButton BtnAgregarEspecificacion = new JButton("Agregar especificacion");
+        JButton BtnVerEspecificacion = new JButton("Ver especificaciones");
+        JButton BtnSalir = new JButton("Salir");
 
-        btnFecha.addActionListener(e -> ejecutarOpcion(1));
-        btnAgregarEspecificacion.addActionListener(e -> ejecutarOpcion(2));
-        btnVerEspecificacion.addActionListener(e -> ejecutarOpcion(3));
-        btnSalir.addActionListener(e -> Submenu.dispose());
+        BtnFecha.addActionListener(e -> ejecutarOpcion(1));
+
+        BtnAgregarEspecificacion.addActionListener(e -> ejecutarOpcion(2));
+
+        BtnVerEspecificacion.addActionListener(e -> ejecutarOpcion(3));
+
+        BtnSalir.addActionListener(e -> Submenu.dispose());
 
         Submenu.add(new JLabel("Submenu de " + getNombre(), SwingConstants.CENTER));
-        Submenu.add(btnFecha);
-        Submenu.add(btnAgregarEspecificacion);
-        Submenu.add(btnVerEspecificacion);
-        Submenu.add(btnSalir);
+        Submenu.add(BtnFecha);
+        Submenu.add(BtnAgregarEspecificacion);
+        Submenu.add(BtnVerEspecificacion);
+        Submenu.add(BtnSalir);
+
         Submenu.setVisible(true);
     }
 
     @Override
     public void ejecutarOpcion(int opcion) {
         switch (opcion) {
+
             case 1:
                 JFrame fechaFrame = new JFrame("Actualizar fecha");
                 fechaFrame.setSize(300, 200);
@@ -144,7 +151,7 @@ public class Game extends RentItem implements MenuActions {
 
                 fechaFrame.setVisible(true);
                 break;
-                
+
             case 2:
                 String esp = JOptionPane.showInputDialog("Ingrese nueva especificacion:");
                 if (esp != null && !esp.trim().isEmpty()) {
@@ -152,11 +159,13 @@ public class Game extends RentItem implements MenuActions {
                     JOptionPane.showMessageDialog(null, "Especificacion agregada");
                 }
                 break;
-                
+
             case 3:
                 listEspecificaciones();
                 break;
-                
+
+            default:
+                JOptionPane.showMessageDialog(null, "Opcion no valida.");
         }
     }
-} 
+}

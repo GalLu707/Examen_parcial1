@@ -10,7 +10,7 @@ package examen_parcial1;
  */
 public interface MenuActions {
     
-    void subMenu();
+    void submenu();
     
     void ejecutarOpcion(int opcion);
 }
