@@ -231,7 +231,7 @@ public class MenuPrincipal extends BaseGui{
         }
 
         PanelRenta vr = new PanelRenta(encontrado);
-        //vr.setVisible(true);
+        vr.setVisible(true);
    
         
     }
