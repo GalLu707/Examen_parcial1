@@ -6,9 +6,7 @@ package examen_parcial1;
 
 
 public class Examen_Parcial1 {
-
     public static void main(String[] args) {
-        System.out.println("ayuda");
+        new MenuPrincipal().setVisible(true);
     }
-    
 }
