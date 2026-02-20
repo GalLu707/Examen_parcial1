@@ -39,7 +39,7 @@ public class MenuPrincipal extends BaseGui{
     
     
    public MenuPrincipal(){
-       super("menu Principal", 615, 550);
+       super("Menu Principal", 615, 550);
        initComponents();
    }
    
@@ -47,14 +47,14 @@ public class MenuPrincipal extends BaseGui{
        panelPrincipal = crearPanelPrincipal();
        panelPrincipal.setLayout(null);
        
-       lblTitulo = crearLabelTitulo("menu principal", 175,20, 280,50);
+       lblTitulo = crearLabelTitulo("Menu Principal", 200,20, 300,80);
        panelPrincipal.add(lblTitulo);
        
        btnAgregarItem= crearbtn("Agregar Item");
        btnAgregarItem.setBounds(200, 105, 220, 50);
        panelPrincipal.add(btnAgregarItem);
        
-       btnRentar = crearbtn("rentar");
+       btnRentar = crearbtn("Rentar");
        btnRentar.setBounds(200,185,220,50);
        panelPrincipal.add(btnRentar);
        
