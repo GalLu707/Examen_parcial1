@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 public class BaseGui extends JFrame {
     
-    private final Font fuentebase = new Font("Comic Sans", Font.BOLD,14);
+    private final Font fuentebase = new Font("Comic Sans MS", Font.BOLD,14);
     
     public BaseGui(String titulo, int w, int h){
         super(titulo);
@@ -67,7 +67,7 @@ public class BaseGui extends JFrame {
     
     protected JLabel crearLabelTitulo(String txt, int x, int y, int w, int h){
        JLabel label = new JLabel(txt);
-       label.setFont(label.getFont().deriveFont(Font.ITALIC, 32f));
+       label.setFont(label.getFont().deriveFont(32f));
        label.setBounds(x, y, w, h);
        
        return label;
