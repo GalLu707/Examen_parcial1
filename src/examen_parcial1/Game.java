@@ -4,6 +4,7 @@
  */
 package examen_parcial1;
 
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -86,10 +88,13 @@ public class Game extends RentItem implements MenuActions {
 
     public void submenu() {
         JFrame Submenu = new JFrame("Submenu de " + getNombre());
-        Submenu.setSize(350, 250);
+        Submenu.setSize(400, 350);
         Submenu.setLocationRelativeTo(null);
-        Submenu.setLayout(new GridLayout(5, 1));
+
+        Submenu.setLayout(new GridLayout(5, 1, 0, 10));
         Submenu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        ((JPanel) Submenu.getContentPane()).setBorder(new javax.swing.border.EmptyBorder(20, 20, 20, 20));
 
         JButton BtnFecha = new JButton("Actualizar fecha de publicacion");
         JButton BtnAgregarEspecificacion = new JButton("Agregar especificacion");
@@ -97,14 +102,14 @@ public class Game extends RentItem implements MenuActions {
         JButton BtnSalir = new JButton("Salir");
 
         BtnFecha.addActionListener(e -> ejecutarOpcion(1));
-
         BtnAgregarEspecificacion.addActionListener(e -> ejecutarOpcion(2));
-
         BtnVerEspecificacion.addActionListener(e -> ejecutarOpcion(3));
-
         BtnSalir.addActionListener(e -> Submenu.dispose());
 
-        Submenu.add(new JLabel("Submenu de " + getNombre(), SwingConstants.CENTER));
+        JLabel titulo = new JLabel("Submenu de " + getNombre(), SwingConstants.CENTER);
+        titulo.setFont(new Font("Arial", Font.BOLD, 14)); 
+
+        Submenu.add(titulo);
         Submenu.add(BtnFecha);
         Submenu.add(BtnAgregarEspecificacion);
         Submenu.add(BtnVerEspecificacion);
