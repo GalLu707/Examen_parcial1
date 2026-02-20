@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
  * @author Nathan
  */
 public abstract class RentItem {
+    
     protected int codItem;
     protected String nombItem;
     protected double precioBase;

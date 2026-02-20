@@ -126,11 +126,11 @@ public class PanelRenta extends BaseGUI {
         try {
             dias = Integer.parseInt(diasStr.trim());
             if (dias <= 0) {
-                JOptionPane.showMessageDialog(this, "Los dias deben ser mayores que cero.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Los dias deben ser mayores a cero.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Cantidad de dias invalida.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Cantidad de dias invalido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
