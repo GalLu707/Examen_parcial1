@@ -18,7 +18,9 @@ import java.util.Date;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
+import java.net.URL;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -27,41 +29,65 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+public class MenuPrincipal extends BaseGui {
 
-public class MenuPrincipal extends BaseGui{
-    
     private JPanel panelPrincipal;
     private JButton btnAgregarItem, btnRentar, btnEjecutar, btnSalir, btnImprimir;
     private JLabel lblTitulo;
     public static ArrayList<RentItem> rentItems = new ArrayList<>();
     private Game game;
-    
-    
-    
-   public MenuPrincipal(){
-       super("Menu Principal", 615, 550);
-       initComponents();
-   }
-   
-   public void initComponents(){
-       panelPrincipal = crearPanelPrincipal();
-       panelPrincipal.setLayout(null);
-       
-       lblTitulo = crearLabelTitulo("Menu Principal", 200,20, 300,80);
-       panelPrincipal.add(lblTitulo);
-       
-       btnAgregarItem= crearbtn("Agregar Item");
-       btnAgregarItem.setBounds(200, 105, 220, 50);
-       panelPrincipal.add(btnAgregarItem);
-       
-       btnRentar = crearbtn("Rentar");
-       btnRentar.setBounds(200,185,220,50);
-       panelPrincipal.add(btnRentar);
-       
-       btnEjecutar = crearbtn("Ejecutar Submenú");
+
+    private static final String RUTA_FONDO = "/Imagenes/fondo.png";
+    private Image fondoImg;
+
+    public MenuPrincipal() {
+        super("Menu Principal", 615, 550);
+        cargarFondo();
+        initComponents();
+    }
+
+    private void cargarFondo() {
+        try {
+            fondoImg = new ImageIcon(
+                    getClass().getResource(RUTA_FONDO)
+            ).getImage();
+        } catch (Exception e) {
+            fondoImg = null;
+        }
+    }
+
+    public void initComponents() {
+
+        panelPrincipal = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                if (fondoImg != null) {
+                    g.drawImage(fondoImg, 0, 0, getWidth(), getHeight(), this);
+                }
+            }
+        };
+
+        panelPrincipal.setLayout(null);
+
+        lblTitulo = crearLabelTitulo("Menu Principal", 200, 20, 300, 80);
+
+        lblTitulo.setForeground(Color.RED);
+
+        panelPrincipal.add(lblTitulo);
+
+        btnAgregarItem = crearbtn("Agregar Item");
+        btnAgregarItem.setBounds(200, 105, 220, 50);
+        panelPrincipal.add(btnAgregarItem);
+
+        btnRentar = crearbtn("Rentar");
+        btnRentar.setBounds(200, 185, 220, 50);
+        panelPrincipal.add(btnRentar);
+
+        btnEjecutar = crearbtn("Ejecutar Submenú");
         btnEjecutar.setBounds(200, 265, 220, 50);
         panelPrincipal.add(btnEjecutar);
-
+ 
         btnImprimir = crearbtn("Ver items registrados");
         btnImprimir.setBounds(200, 345, 220, 50);
         panelPrincipal.add(btnImprimir);
@@ -70,22 +96,19 @@ public class MenuPrincipal extends BaseGui{
         btnSalir.setBounds(480, 455, 80, 40);
         btnSalir.setBackground(Color.red);
         panelPrincipal.add(btnSalir);
-       
-        
-        
-        btnSalir.addActionListener(e-> dispose());
+
+        btnSalir.addActionListener(e -> dispose());
         btnAgregarItem.addActionListener(e -> agregarItem());
         btnRentar.addActionListener(e -> Rentar());
         btnImprimir.addActionListener(e -> imprimirTodo());
         btnEjecutar.addActionListener(e -> ejecutarSubMenu());
-       
-        
+
         setContentPane(panelPrincipal);
-   }
-    
-    private void agregarItem(){
-       String opciones[] = {"Movie", "Game"};
-       int tipo = JOptionPane.showOptionDialog(
+    }
+
+    private void agregarItem() {
+        String opciones[] = {"Movie", "Game"};
+        int tipo = JOptionPane.showOptionDialog(
                 this,
                 "Seleccione tipo de Ttem",
                 "Agregar Item",
@@ -94,7 +117,7 @@ public class MenuPrincipal extends BaseGui{
                 null,
                 opciones,
                 opciones[0]
-        ); 
+        );
         if (tipo == JOptionPane.CLOSED_OPTION) {
             return;
         }
@@ -118,9 +141,10 @@ public class MenuPrincipal extends BaseGui{
                 return;
             }
         }
-       String nombre = JOptionPane.showInputDialog(this, "Nombre del ítem:");
+
+        String nombre = JOptionPane.showInputDialog(this, "Nombre del ítem:");
         if (nombre == null || nombre.trim().isEmpty()) {
-            return; 
+            return;
         }
         nombre = nombre.trim();
 
@@ -157,10 +181,10 @@ public class MenuPrincipal extends BaseGui{
                 cal.setTime(chooserFecha.getDate());
                 m.setFechaEstreno(cal);
             }
-            
+
             nuevo = m;
-            
-            } else {
+
+        } else {
             nuevo = new Game(codigo, nombre);
         }
 
@@ -193,12 +217,9 @@ public class MenuPrincipal extends BaseGui{
 
         rentItems.add(nuevo);
         JOptionPane.showMessageDialog(this, "Ítem agregado correctamente.");
-            
-        
-        
     }
-    
-    public void Rentar(){
+
+    public void Rentar() {
         if (rentItems.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay ítems registrados.", "Rentar", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -216,7 +237,7 @@ public class MenuPrincipal extends BaseGui{
             JOptionPane.showMessageDialog(this, "Código inválido.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
- 
+
         RentItem encontrado = null;
         for (RentItem ri : rentItems) {
             if (ri.getCodigo() == codigo) {
@@ -232,11 +253,9 @@ public class MenuPrincipal extends BaseGui{
 
         PanelRenta vr = new PanelRenta(encontrado);
         vr.setVisible(true);
-   
-        
     }
-    
-    private void imprimirTodo(){
+
+    private void imprimirTodo() {
         if (rentItems.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No hay ítems registrados", "Ver ítems", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -310,15 +329,11 @@ public class MenuPrincipal extends BaseGui{
         dialogPanel.add(title, BorderLayout.NORTH);
         dialogPanel.add(scroll, BorderLayout.CENTER);
 
-        
         JOptionPane.showMessageDialog(this, dialogPanel, "Listado de Ítems", JOptionPane.PLAIN_MESSAGE);
-        
-        
     }
-    
-    
-    private void ejecutarSubMenu(){
-      ArrayList<Game> juegos = new ArrayList<>();
+
+    private void ejecutarSubMenu() {
+        ArrayList<Game> juegos = new ArrayList<>();
         for (RentItem ri : rentItems) {
             if (ri instanceof Game) {
                 juegos.add((Game) ri);
@@ -352,9 +367,6 @@ public class MenuPrincipal extends BaseGui{
                     break;
                 }
             }
-        }  
+        }
     }
-    
-    
-    
 }
