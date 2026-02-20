@@ -6,14 +6,12 @@ package examen_parcial1;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JDateChooser;
 import java.util.Calendar;
 import java.util.Date;
