@@ -19,7 +19,7 @@ public class Movie extends RentItem{
     this.fechaEstreno = Calendar.getInstance();
     }
     
-    public void setFechaEstrano(Calendar fechaEstreno){
+    public void setFechaEstreno(Calendar fechaEstreno){
         this.fechaEstreno = fechaEstreno;
     }
     
