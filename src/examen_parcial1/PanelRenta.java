@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
  *
  * @author Nathan
  */
-public class PanelRenta extends BaseGUI {
+public class PanelRenta extends BaseGui {
     
     private JPanel panelPrincipal;
     private JLabel lblTitulo;
@@ -25,8 +25,8 @@ public class PanelRenta extends BaseGUI {
     private JTextField txtDias;
     private JButton btnCalcular;
     private JButton btnCerrar;
-    private RentItem item;
-
+    private RentItem item; 
+ 
     public PanelRenta(RentItem item) {
         super("Rentar Ítem", 540, 370);
         this.item = item;
@@ -34,10 +34,10 @@ public class PanelRenta extends BaseGUI {
     }
     
     private void initComponents() {
-        panelPrincipal = createPanelPrincipal();
+        panelPrincipal = crearPanelPrincipal();
         panelPrincipal.setLayout(null);
 
-        lblTitulo = createLabelTitle("RENTAR ÍTEM", 190, 15, 300, 40);
+        lblTitulo = crearLabelTitulo("RENTAR ÍTEM", 190, 15, 300, 40);
         lblTitulo.setFont(lblTitulo.getFont().deriveFont(22f));
         panelPrincipal.add(lblTitulo);
 
@@ -68,18 +68,18 @@ public class PanelRenta extends BaseGUI {
         lblDias.setFont(lblDias.getFont().deriveFont(14f));
         panelPrincipal.add(lblDias);
 
-        txtDias = createTextField(330, 225, 80, 30);
+        txtDias = crearTextField(330, 225, 80, 30);
         txtDias.setBorder(new CompoundBorder(
                 new LineBorder(new Color(220, 220, 220), 1, true),
                 new EmptyBorder(3, 10, 3, 10)
         ));
         panelPrincipal.add(txtDias);
 
-        btnCalcular = createBtn("Calcular");
+        btnCalcular = crearbtn("Calcular");
         btnCalcular.setBounds(223, 266, 105, 28);
         panelPrincipal.add(btnCalcular);
 
-        btnCerrar = createBtn("Cerrar");
+        btnCerrar = crearbtn("Cerrar");
         btnCerrar.setBounds(350, 265, 110, 30);
         btnCerrar.setBackground(Color.red);
         panelPrincipal.add(btnCerrar);
