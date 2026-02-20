@@ -56,7 +56,7 @@ public class MenuPrincipal extends BaseGui{
        
        btnRentar = crearbtn("rentar");
        btnRentar.setBounds(200,185,220,50);
-       panelPrincipal.add(panelPrincipal);
+       panelPrincipal.add(btnRentar);
        
        btnEjecutar = crearbtn("Ejecutar Submenú");
         btnEjecutar.setBounds(200, 265, 220, 50);

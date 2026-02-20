@@ -10,3 +10,4 @@ public class Examen_Parcial1 {
         new MenuPrincipal().setVisible(true);
     }
 }
+ 
